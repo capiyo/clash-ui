@@ -54,7 +54,7 @@ const SlidingPagesToggle = () => {
       </div>
 
       {/* Bottom Fixed Sliding Toggle */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-50">
         <div className="sliding-toggle w-48 shadow-lg backdrop-blur-md bg-[#300669] /90 border border-border">
           <div 
             className={`sliding-toggle-slider ${
