@@ -165,8 +165,7 @@ const handleIncrement = useCallback(() => {
         };
       case "addpost":
         return {
-          title: "addposts",
-          description: "post something about``",
+          
           content: (
             <div className="p-1 space-y-1">
             <AddPost/>
@@ -192,7 +191,7 @@ const handleIncrement = useCallback(() => {
   };
 
   return (
-    <div>
+    <div className="z-100">
  <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div className="absolute  rounded-e-full z-40 top-5  text-[#300669] right-5"><Menu /></div>
@@ -267,7 +266,7 @@ const handleIncrement = useCallback(() => {
             open={activeDrawer === item.id}
             onOpenChange={(open) => !open && handleChange("null")}
           >
-            <SheetContent className="h-full bottom-0 mt-[400px]  lg:mr-[300px] transition-transform duration-500 ease-out w-[400px] 
+            <SheetContent className="h-screen bottom-0 mt-[400px]  lg:mr-[300px] transition-transform duration-500 ease-out w-[400px] 
              rounded-lg right-0" side="right">
               <SheetHeader>
                 <SheetTitle>{drawerContent.title}</SheetTitle>

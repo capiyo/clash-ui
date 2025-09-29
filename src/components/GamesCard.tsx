@@ -431,9 +431,85 @@ const  submitAmount=(homeTeam,awayTeam,date)=>{
               <MessageCircle className="w-4 h-4 mr-1" />
               78
             </Button>
-          <Button variant="gradient" size="sm" className="flex-1">
-            pledge bet
-          </Button>
+            <div className="space-y-2 space-x-2">
+           <Sheet  >
+                <SheetTrigger className=""> <div  className="flex-1 w-[150px] p-1 rounded-lg bg-gradient-to-r from-[#300669] via-accent to-primary bg-[length:200%_100%] animate-gradient text-primary-foreground font-semibold shadow-glow">
+                            pledge bet
+                          </div></SheetTrigger>
+
+
+                <SheetContent  className="sm:w-screen lg:w-[400px] h-[200px] rounded-lg right-0" side="bottom">
+                   <SheetHeader>
+                    <SheetTitle>pledge amount</SheetTitle>
+                    <SheetDescription>
+                    </SheetDescription>
+                  </SheetHeader>
+                  <form  className="ml-4 mr-4"  onSubmit={()=>submitAmount(games.homeTeam,games.awayTeam,games.date)} >
+
+                      <div className="">
+                        <div>
+                          <div>Select your team</div>
+                          <div className="flex flex-row justify-between  ">
+                          <div className={`${back1} rounded-lg p-1`}  onClick={(event)=>changeBackground1("homeTeam")}>{games.home_team}</div>
+                          vs
+                          <div className={`${back2} rounded-lg p-1`} onClick={(event)=>changeBackground2("awayTeam")}>{games.away_team}</div>
+                          </div>
+
+                        </div>
+
+
+
+                                   
+                                    <input 
+                                    value={amount}
+                                    onChange={handleChange}
+                                    tt-2
+                                      type="text" 
+                                      className="w-full p-1 border rounded-lg focus:ring-1 focus:ring-primary focus:border-transparent"
+                                      placeholder="ksh:100"
+                                    />
+                                  </div>
+                                 
+                                  <div>
+                                  
+                                  </div>
+                                     
+                        <Button onClick={()=>submitAmount(games.home_team,games.away_team,games.date)}  type="submit" variant="gradient" className=" mt-2 w-full" size="sm">
+                                  <DollarSign className="w-4 h-4 mr-2" />
+                                submit
+                                </Button>
+                       
+                      
+                  
+                  
+                  
+                                  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   {/* Specify 'right' for the side property */}
+                 
+                  {/* Add your content here */}
+                </SheetContent>
+              </Sheet>
+        </div>
+
+
+
+          
            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
               <Heart className="w-4 h-4 mr-1" />
               56

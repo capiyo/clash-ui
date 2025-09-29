@@ -239,7 +239,7 @@ useEffect(() => {
 
 
   return (
-      <div className="lg:w-[600px] sm:mt-5 lg:mt-10 overflow-auto  h-screen">
+      <div className="lg:w-[600px] sm:mt-5 lg:mt-10 overflow-auto">
     
      
       <div className="space-y-4">

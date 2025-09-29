@@ -77,10 +77,9 @@
         {/* Pledge Button */}
          <div className="space-y-2 space-x-2">
            <Sheet  >
-                <SheetTrigger className="w-full "> <Button variant="gradient" className="w-full" size="sm">
-                                <DollarSign className="w-4 h-4 mr-2" />
-                              pledge bet
-                              </Button></SheetTrigger>
+                <SheetTrigger className="w-full "> <Button variant="gradient" size="sm" className="flex-1">
+                            pledge bet
+                          </Button></SheetTrigger>
 
 
                 <SheetContent  className="sm:w-screen lg:w-[400px] h-[200px] rounded-lg right-0" side="bottom">
