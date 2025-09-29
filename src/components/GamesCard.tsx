@@ -160,11 +160,11 @@ useEffect(() => {
 
 
   return (
-      <div className='flex  mt-5 lg:ml-20  overflow-auto h-screen sm:w-screen'  >
+      <div className='flex  mt-5 lg:ml-20  overflow-auto h-screen w-[400px]'  >
             
                       
                            
-            <div className='grid sm:grid-cols-2 md:grid-cols-2 ' >
+            <div className='grid sm:grid-cols-2 md:grid-cols-2 w-[400px] ' >
               {games.map((game, key) => <Carda    key={key} games={game} />)}
               
 
