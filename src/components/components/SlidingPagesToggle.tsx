@@ -34,7 +34,7 @@ const SlidingPagesToggle = () => {
      
 
       {/* Content Area with Sliding Pages */}
-      <div className="max-w-4xl  pb-24">
+      <div className="sm:w-screen  pb-10">
         <div className="page-slide-container min-h-[calc(100vh-80px)]">
           <div 
             className={`page-slide ${

@@ -160,7 +160,7 @@ useEffect(() => {
 
 
   return (
-      <div className='flex  mt-5 lg:ml-20  overflow-auto h-screen'  >
+      <div className='flex  mt-5 lg:ml-20  overflow-auto h-screen sm:w-screen'  >
             
                       
                            
