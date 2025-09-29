@@ -383,7 +383,7 @@ const  submitAmount=(homeTeam,awayTeam,date)=>{
       </div>
 
       {/* Match Details */}
-      <div className="p-2 space-y-4">
+      <div className="">
         {/* Teams */}
         <div className="flex items-center justify-between">
           <div className="flex-1">
