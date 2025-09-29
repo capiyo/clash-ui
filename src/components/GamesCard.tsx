@@ -160,11 +160,11 @@ useEffect(() => {
 
 
   return (
-      <div className='flex  mt-5 lg:ml-20  overflow-auto h-screen w-[400px]'  >
+      <div className='flex  mt-5 lg:ml-20  overflow-auto h-screen lg:w-[1000px]'  >
             
                       
                            
-            <div className='grid sm:grid-cols-2 md:grid-cols-2 w-[400px] ' >
+            <div className='grid sm:grid-cols-2 md:grid-cols-2 lg:w-[1000px] justify-between ' >
               {games.map((game, key) => <Carda    key={key} games={game} />)}
               
 
@@ -364,7 +364,7 @@ const  submitAmount=(homeTeam,awayTeam,date)=>{
 
      <Card
       className={cn(
-        "relative m-3  w-[400px] backdrop-blur-sm border-border/50 bg-gradient-to-br from-card/90 to-card/50 hover:shadow-glow transition-all duration-300 animate-slideUp",
+        "relative m-3  w-[500px] backdrop-blur-sm border-border/50 bg-gradient-to-br from-card/90 to-card/50 hover:shadow-glow transition-all duration-300 animate-slideUp",
         featured && "ring-2 ring-primary shadow-pink"
       )}
     >

@@ -59,9 +59,9 @@ const Index = () => {
  <div className="flex-col  ">
       <div className="sm:hidden md:block"><Header />      </div>
      <div><HeroSection/></div>
-      <div className="flex flex-row w-full">
+      <div className="flex flex-row w-screen">
      <div className="hidden md:flex"><Posts/></div>
-     <div className="hidden md:flex"><GamesCard/></div>
+     <div className="hidden md:flex  lg:w-[800px]"><GamesCard/></div>
      
      </div>
      
