@@ -48,7 +48,7 @@ const SlidingPagesToggle = () => {
               activePage === "posts" ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            <GamesCard/>
+            <Posts/>
           </div>
         </div>
       </div>
