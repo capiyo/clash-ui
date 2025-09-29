@@ -364,7 +364,7 @@ const  submitAmount=(homeTeam,awayTeam,date)=>{
 
      <Card
       className={cn(
-        "relative m-3  w-[500px] backdrop-blur-sm border-border/50 bg-gradient-to-br from-card/90 to-card/50 hover:shadow-glow transition-all duration-300 animate-slideUp",
+        "relative m-3  sm:w-screen backdrop-blur-sm border-border/50 bg-gradient-to-br from-card/90 to-card/50 hover:shadow-glow transition-all duration-300 animate-slideUp",
         featured && "ring-2 ring-primary shadow-pink"
       )}
     >
