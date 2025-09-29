@@ -160,11 +160,11 @@ useEffect(() => {
 
 
   return (
-      <div className='flex  mt-5 lg:ml-20  overflow-auto h-screen lg:w-[1000px] sm:w-[400px]'  >
+      <div className='flex  mt-2 lg:ml-20    h-screen lg:w-[1000px]'  >
             
                       
                            
-            <div className='grid sm:grid-cols-2 md:grid-cols-2 lg:w-[1000px] justify-between sm:w-[400px] ' >
+            <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:w-[1000px]' >
               {games.map((game, key) => <Carda    key={key} games={game} />)}
               
 
@@ -361,68 +361,56 @@ const  submitAmount=(homeTeam,awayTeam,date)=>{
 
 
   return(
-
-     <Card
-      className={cn(
-        "relative m-3  sm:w-[400px] backdrop-blur-sm border-border/50 bg-gradient-to-br from-card/90 to-card/50 hover:shadow-glow transition-all duration-300 animate-slideUp",
-        featured && "ring-2 ring-primary shadow-pink"
-      )}
-    >
-      {/* Tournament Badge */}
-      <div className="flex items-center justify-between p-1 border-b border-border/50">
-        <div className="flex items-center gap-1">
-          <Trophy className="w-4 h-4 text-[#300669]" />
-          <span className="text-sm font-medium text-muted-foreground">{games.league}</span>
-        </div>
-        {isLive && (
-          <Badge className="bg-gradient-to-r from-primary to-accent text-primary-foreground animate-pulse">
-            <Zap className="w-3 h-3 mr-1" />
-            LIVE
-          </Badge>
-        )}
-      </div>
-
-      {/* Match Details */}
-      <div className="">
-        {/* Teams */}
-        <div className="flex items-center justify-between">
-          <div className="flex-1">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+ <Card className="w-screen  lg:w-[450px] group  m-1 hover:shadow-medium transition-all duration-300 animate-fade-in">
+      <CardHeader className="pb-3">
+        <div className="flex items-start justify-between">
+           <div className="w-5 h-5 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                 <img  className="rounded-full" src={ball}/>
               </div>
-              <div>
-                
-                <p className="font-semibold text-foreground">{games.home_team}</p>
-                <p className="text-xs text-muted-foreground">{games.home_win}</p>
-              </div>
+          <div className="space-y-1">
+           
+            <div className=" flex flex-row justify-around">
+
+            <h3 className="font-semibold text-sm text-foreground group-hover:text-primary  transition-colors">
+            {games.home_team}
+            </h3>
+            <h3 className=" text-sm m-2 text-foreground group-hover:text-primary transition-colors">
+            vs
+            </h3>
+            <h3 className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors">
+            {games.away_team}
+            </h3>
+            </div>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Building2 className="h-4 w-4" />
+              <span className="font-medium">league</span>
             </div>
           </div>
-          
-          <div className="px-4">
-            <span className="text-xl font-bold bg-gradient-to-r from-[#300669] to-accent bg-clip-text text-transparent">vs</span>
+          <span className="bg-accent text-accent-foreground px-2 py-1 rounded-full text-xs font-medium">
+            {games.date}
+          </span>
+        </div>
+      </CardHeader>
+
+      <CardContent className="space-y-4">
+        <p className="text-muted-foreground text-sm line-clamp-2">
+          {games.home_win}
+        </p>
+
+        <div className="flex items-center gap-4 text-sm">
+          <div className="flex items-center gap-1 text-muted-foreground">
+            <MapPin className="h-4 w-4" />
+            <span>{games.draw}</span>
           </div>
-          
-          <div className="flex-1">
-            <div className="flex items-center gap-3 justify-end">
-              <div className="text-right">
-                <p className="font-semibold text-foreground">{games.away_team}</p>
-                <p className="text-xs text-muted-foreground">{games.away_win}</p>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
-                <Users className="w-5 h-5 text-accent" />
-              </div>
-            </div>
+          <div className="flex items-center gap-1 text-muted-foreground">
+            <DollarSign className="h-4 w-4" />
+            <span>{games.away_win}</span>
+          </div>
+          <div className="flex items-center gap-1 text-muted-foreground">
+            <Clock className="h-4 w-4" />
+            <span>{games.away_team}</span>
           </div>
         </div>
-
-        {/* Date and Time */}
-        <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-          <Calendar className="w-4 h-4" />
-          <span>{games.day}, {games.date}</span>
-        </div>
-
-        {/* Betting Options */}
         <div className="grid grid-cols-3 gap-2">
           <Button variant="social" className="flex flex-col h-auto py-1 hover:bg-primary/10 hover:border-primary">
             <span className="text-xs text-muted-foreground mb-1">Home Win</span>
@@ -438,103 +426,22 @@ const  submitAmount=(homeTeam,awayTeam,date)=>{
           </Button>
         </div>
 
-        {/* Pledge Button */}
-         <div className="space-y-2 space-x-2">
-           <Sheet  >
-                <SheetTrigger className="w-full "> <Button variant="gradient" className="w-full" size="sm">
-                                <DollarSign className="w-4 h-4 mr-2" />
-                              pledge bet
-                              </Button></SheetTrigger>
-
-
-                <SheetContent  className="sm:w-screen lg:w-[400px] h-[200px] rounded-lg right-0" side="bottom">
-                   <SheetHeader>
-                    <SheetTitle>pledge amount</SheetTitle>
-                    <SheetDescription>
-                    </SheetDescription>
-                  </SheetHeader>
-                  <form  className="ml-4 mr-4"  onSubmit={()=>submitAmount(games.homeTeam,games.awayTeam,games.date,games.day)} >
-
-                      <div className="">
-                        <div>
-                          <div>Select your team</div>
-                          <div className="flex flex-row justify-between  ">
-                          <div className={`${back1} rounded-lg p-1`}  onClick={(event)=>changeBackground1("homeTeam")}>{games.home_team}</div>
-                          vs
-                          <div className={`${back2} rounded-lg p-1`} onClick={(event)=>changeBackground2("awayTeam")}>{games.away_team}</div>
-                          </div>
-
-                        </div>
-
-
-
-                                   
-                                    <input 
-                                    value={amount}
-                                    onChange={handleChange}
-                                    tt-2
-                                      type="text" 
-                                      className="w-full p-1 border rounded-lg focus:ring-1 focus:ring-primary focus:border-transparent"
-                                      placeholder="ksh:100"
-                                    />
-                                  </div>
-                                 
-                                  <div>
-                                  
-                                  </div>
-                                     
-                        <Button onClick={()=>submitAmount(games.home_team,games.away_team,games.date)}  type="submit" variant="gradient" className=" mt-2 w-full" size="sm">
-                                  <DollarSign className="w-4 h-4 mr-2" />
-                                submit
-                                </Button>
-                       
-                      
-                  
-                  
-                  
-                                  </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                   {/* Specify 'right' for the side property */}
-                 
-                  {/* Add your content here */}
-                </SheetContent>
-              </Sheet>
-        </div>
-
-        {/* Social Interactions */}
-        <div className="flex items-center justify-between  border-t border-border/50">
-          <div className="flex gap-4">
-            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
-              <Heart className="w-4 h-4 mr-1" />
-              56
-            </Button>
-            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+        <div className="flex gap-2 pt-2">
+          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
               <MessageCircle className="w-4 h-4 mr-1" />
               78
             </Button>
-          </div>
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-accent">
-            <TrendingUp className="w-4 h-4 mr-1" />
-            Stats
+          <Button variant="gradient" size="sm" className="flex-1">
+            pledge bet
           </Button>
+           <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+              <Heart className="w-4 h-4 mr-1" />
+              56
+            </Button>
         </div>
-      </div>
-    </Card>)
+      </CardContent>
+    </Card>
+     
 
 
 
@@ -553,156 +460,11 @@ const  submitAmount=(homeTeam,awayTeam,date)=>{
 
 
 
-  /*<div className="w-[450px] m-1">
-        
-         
-          <div className="space-y-4">
-              <div className="game-card">
-                <div className="flex items-start gap-3">
-                  <Avatar className="w-10 h-10">
-                    <AvatarFallback className="bg-[#300669]  text-primary-foreground">
-                      ol
-    
-                    </AvatarFallback>
-                  </Avatar>
-                  
-                  <div className="flex-1 space-y-3">
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="font-medium">{games.awayTeam}</span>
-                      <span className="text-muted-foreground">vs</span>
-                     
-                      <span className="text-muted-foreground flex items-center gap-1 font-medium">
-                        <Clock className="h-3 w-3" />
-                        {games.homeTeam}
-                      </span>
-                    </div>
-                    
-                    <p className="text-sm leading-relaxed">{games.date}</p>
-                    <p className="text-sm leading-relaxed">{games.day}</p>
-                    
-                    <div className="flex  gap-6 text-bae text-muted-foreground w-full">
-    
-                      <div  className=" rounded-full p-1 justify-between"><button className="flex items-center gap-1 hover:text-red-500 transition-colors">
-                        <Heart className="h-4 w-4" />
-                        like
-    
-                      </button>
-                      </div>
-                      
-                      
-                      <div className=" rounded-full p-1 justify-between"><button className="flex items-center gap-1 hover:text-primary transition-colors">
-                       <MessageSquare className="h-4 w-4" />
-                       comments
-                      </button>
-                      </div>
-                      
-                      <div className=" rounded-full p-1 justify-between"><button className="flex items-center gap-1 hover:text-primary transition-colors">
-                        <Heart className="h-4 w-4" />
-                    pledge
-                      </button>
-                      </div>
-                     
-                    </div>
-                     <div>premier league</div>
-                  </div>
-                </div>
-              </div>
-          
-          </div>
-        </div>)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     {/*<div className="lg:w-[600px] sm:mt-5 lg:mt-10 overflow-auto">
-            
-              <div  className="post-card w-[600px]">
-                <div className="flex  gap-3">
-                  <Avatar className="w-10 h-10">
-                    <AvatarFallback className="bg-[#300669]  text-primary-foreground">
-                      an
-                    </AvatarFallback>
-                  </Avatar>
-                  
-                  <div className="flex-1 space-y-3">
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="font-medium text-[#300669] ">{games.homeTeam}</span>
-                      <span className="font-medium">vs</span>
-
-                      <span className="font-medium text-[#300669]">{games.awayTeam}</span>
-                      <span className="text-muted-foreground">•</span>
-                      <span className="text-muted-foreground flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
-                        {games.time}
-                      </span>
-                    </div>
-                    
-                    <p className="text-sm leading-relaxed">{games.day}</p>
-                    
-                    <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                      <button className="flex items-center gap-1 hover:text-red-500 transition-colors">
-                        <Heart className="h-4 w-4" />
-                        30
-                      </button>
-                      <button className="flex items-center gap-1 hover:text-primary transition-colors">
-                        <MessageSquare className="h-4 w-4" />
-                        35
-                    
-                      </button>
-                      <button className="flex items-center gap-1  hover:text-primary transition-colors">
-                        <Share2 className="h-4 w-4" />
-                        67
-                      </button>
-                    </div>
-                    <div className="flex flex-row justify-between">
-                    <div className="font-bold text-[#300669] ">premier league</div>
-                    <div className="font-bold text-[#300669] ">old traford</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            
-          </div>
-     */
+  
           
       
           
-        
+  )     
 }
 
 

@@ -61,7 +61,7 @@ const Index = () => {
      <div><HeroSection/></div>
       <div className="flex flex-row w-screen">
      <div className="hidden md:flex"><Posts/></div>
-     <div className="hidden md:flex  lg:w-[800px]"><GamesCard/></div>
+     <div className="hidden md:flex   overflow-auto"><GamesCard/></div>
      
      </div>
      
