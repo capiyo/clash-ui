@@ -383,7 +383,7 @@ const  submitAmount=(homeTeam,awayTeam,date)=>{
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Building2 className="h-4 w-4" />
-              <span className="font-medium">league</span>
+              <span className="font-medium">{games.league}</span>
             </div>
           </div>
           <span className="bg-accent text-accent-foreground px-2 py-1 rounded-full text-xs font-medium">
