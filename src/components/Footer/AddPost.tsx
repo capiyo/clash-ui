@@ -77,11 +77,14 @@ const {
 
     try {
       const formData = new FormData();
-      formData.append('title', data.title);
-      formData.append('description', data.description);
+      formData.append('caption', data.caption);
       formData.append('image', data.image[0]);
+      formData.append('poster',"capiyo");
+      formData.append("fun","manchester united")
+      formData.append("time","time")
+     formData.append("country","france")
 
-      const response = await fetch('/api/content/', {
+      const response = await fetch('http://localhost:8000/clash/add_post', {
         method: 'POST',
         body: formData,
         headers: {
@@ -195,20 +198,7 @@ const {
           )}
         </div>
 
-        {previewImage && (
-          <div className="image-preview">
-            <div className="relative rounded-xl overflow-hidden border-2 border-pink-200 shadow-sm">
-              <img 
-                src={previewImage} 
-                alt="Preview" 
-                className="w-15 h-15 object-cover"
-              />
-              <div className="absolute top-2 right-2 bg-pink-500 text-white text-xs px-2 py-1 rounded-full">
-                Preview
-              </div>
-            </div>
-          </div>
-        )}
+       
 
         <button 
           type="submit" 

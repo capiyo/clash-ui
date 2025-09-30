@@ -426,7 +426,7 @@ const  submitAmount=(homeTeam,awayTeam,date)=>{
           </Button>
         </div>
 
-        <div className="flex gap-2 pt-2">
+        <div className="flex gap-2  w-full ml-10 ">
           <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
               <MessageCircle className="w-4 h-4 mr-1" />
               78
