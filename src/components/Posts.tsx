@@ -28,23 +28,64 @@ import {
   Star,
   Target
 } from "lucide-react";
+import axios, { AxiosResponse } from 'axios';
+
+
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
+const API_BASE_URL = 'http://localhost:8000/clash/get_posts';
+
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  timeout: 10000,
+});
 
 
 
-interface GamesCardProps {
-  awayTeam:string,
-  homeTeam:string,
-  date:string,
-  time:string,
-  day:string,
+export interface File {
+  id: string;
+  filename: string;
+  size: number;
+  upload_date: string;
+  content_type: string;
+  description?: string;
+  tags?: string[];
+}
 
+export interface ApiResponse<T> {
+  status: 'success' | 'error';
+  files?: T[];
+  message?: string;
+}
 
+export interface DownloadProgress {
+  loaded: number;
+  total: number;
+  percentage: number;
+}
 
-    
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
   }
+);
+
+// Response interceptor
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error('API Error:', error);
+    return Promise.reject(error);
+  }
+);
 
 
 
@@ -65,8 +106,7 @@ const Posts = () => {
     const overlay = useSelector((state: RootState) => state.laydata.overlay);
      const { toast } = useToast();
 
- const [games, setGames] = useState<GamesCardProps[]>([]);
- 
+
   
 
 
@@ -97,7 +137,7 @@ useEffect(() => {
         const getUsers = async () => {
           try {
             const data = await fetchUsers();
-            setGames(data);
+            
             //console.log(jobs)
           } catch (err) {
             console.log(err)
@@ -113,13 +153,13 @@ useEffect(() => {
 
 
 
-      async function fetchUsers(): Promise<GamesCardProps[]> {
+       async function fetchUsers(): Promise<File[]> {
       try {
-        const response = await fetch('https://clashapi-1-5p0f.onrender.com/clash/getAllGames'); // Replace with your API endpoint
+        const response = await fetch('http://localhost:8000/clash/get_posts'); // Replace with your API endpoint
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data: GamesCardProps[] = await response.json();
+        const data: File[] = await response.json();
         console.log(data)
         return data;
       } catch (error) {
@@ -127,6 +167,13 @@ useEffect(() => {
         throw error; // Re-throw to allow component to handle
       }
     }
+
+     
+
+
+
+     
+ 
 
 
     const postsData = [
@@ -232,6 +279,27 @@ useEffect(() => {
 
 
 
+ useEffect(() => {
+        const getUsers = async () => {
+          try {
+            const data = await fetchUsers();
+            
+            //console.log(jobs)
+          } catch (err) {
+            console.log(err)
+           // setError("Error fetching users.");
+          } finally {
+            console.log("Capiyo")
+            //setLoading(false);
+          }
+        };
+
+        getUsers();
+      }, []);
+
+
+
+      
 
 
 

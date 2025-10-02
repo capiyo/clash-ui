@@ -13,7 +13,9 @@ import {
 } from "@/components/ui/drawer"
 import { Button } from "@/components/ui/button";
 import { toast } from 'react-hot-toast';
+
 import {useForm} from 'react-hook-form'
+import axios from 'axios';
 import {
   Sheet,
   SheetContent,
@@ -30,6 +32,8 @@ export const AddPost = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [previewImage, setPreviewImage] = useState(null);
+   const [files, setFiles] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 
 
@@ -77,31 +81,41 @@ const {
 
     try {
       const formData = new FormData();
-      formData.append('caption', data.caption);
-      formData.append('image', data.image[0]);
-      formData.append('poster',"capiyo");
-      formData.append("fun","manchester united")
-      formData.append("time","time")
-     formData.append("country","france")
+      formData.append('description', data.caption);
+      formData.append('file', data.image[0]);
+      //formData.append('poster',"capiyo");
+      //formData.append("fun","manchester united")
+      //formData.append("time","time")
+     //formData.append("country","france")
+     for (const pair of formData.entries()) {
+        console.log(`${pair[0]}: ${pair[1]}`);
+    }
 
-      const response = await fetch('http://localhost:8000/clash/add_post', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Authorization': `Token ${localStorage.getItem('token')}`, // or use your auth method
-        },
-      });
+    const response = await axios.post('http://localhost:8000/clash/add_post', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
 
-      if (response.ok) {
-        setMessage('Content uploaded successfully!');
-        reset();
-        setPreviewImage(null);
-      } else {
-        const errorData = await response.json();
-        setMessage(`Upload failed: ${JSON.stringify(errorData)}`);
-      }
-    } catch (error) {
+
+
+
+
+    
+                       
+                  }
+
+
+
+
+
+
+
+
+
+       catch (error) {
       setMessage(`Upload error: ${error.message}`);
+      console.log(error)
     } finally {
       setIsLoading(false);
     }
